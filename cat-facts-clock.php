@@ -3,7 +3,7 @@
 
 
 	
-	$enabled = shell_exec("defaults read org.ccombs.catfactsclock enabled 2>/dev/null");
+	$enabled = chop(shell_exec("defaults read org.ccombs.catfactsclock enabled 2>/dev/null"));
 	// echo $enabled;
 	
 	if ( !$enabled || $enabled==1 ) {
@@ -18,7 +18,7 @@
 
 	$json_string = file_get_contents("http://catfacts-api.appspot.com/api/facts?number=1");
 	$parsed_json = json_decode($json_string);
-	$voice = shell_exec("defaults read org.ccombs.catfactsclock voice 2>/dev/null");
+	$voice = chop(shell_exec("defaults read org.ccombs.catfactsclock voice 2>/dev/null"));
 	
 	
 	if (!$voice || $voice==1) {
